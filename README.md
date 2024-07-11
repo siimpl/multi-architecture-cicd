@@ -1,6 +1,6 @@
 # multi-architecture-cicd
 
-This project deploys self-hosted GitHub runners to be used for multi-architecture builds.
+This project deploys self-hosted GitHub runners to be used for multi-architecture builds and offers up to **90% faster builds**.
 The implementation is reflective of a CI/CD solution we built for a mid-size security startup.
 
 Typically, multi-architecture builds leverage an emulation tool like [QEMU](https://docs.docker.com/build/building/multi-platform/#qemu) to enable cross-platforms builds from a single machine.
@@ -8,7 +8,7 @@ This offers a simpler configuration, but delivers a significant perfomance hit w
 
 Our solution uses the [native node strategy](https://docs.docker.com/build/building/multi-platform/#multiple-native-nodes) to give us the performance gains of native architecture builds, but still supporting multi-architecture manifests.
 
-Going through the guide, you will notice how the `native-build` action runs almost 100% faster than the `emulated-build` action using the self-hosted runners.
+Going through the guide, you will notice how the `native-build` action runs roughly 90% faster than the `emulated-build` action using the self-hosted runners.
 
 ## Pre-requisuites
 
