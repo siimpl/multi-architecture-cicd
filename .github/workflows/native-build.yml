@@ -35,7 +35,7 @@ jobs:
           context: .
           platforms: linux/${{ matrix.architecture }}
           push: true
-          tags: ${{ env.IMAGE_NAME }}
+          tags: ghcr.io/siimpl/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}-${{ matrix.architecture }}
           cache-from: type=registry,ref=ghcr.io/siimpl/${{ env.IMAGE_NAME }}:builder-cache-${{ matrix.architecture }}
           cache-to: type=registry,ref=ghcr.io/siimpl/${{ env.IMAGE_NAME }}:builder-cache-${{ matrix.architecture }},mode=max
   publish-manifest:
