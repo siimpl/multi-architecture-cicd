@@ -34,8 +34,8 @@ jobs:
           platforms: linux/${{ matrix.architecture }}
           push: true
           tags: ${{ env.IMAGE_NAME }}
-          cache-from: format('type=registry, ref={0}/{1}:builder-cache-{2}}', 'ghcr.io/siimpl', env.IMAGE_NAME, matrix.architecture)
-          cache-to: format('type=registry, ref={0}/{1}:builder-cache-{2}}', 'ghcr.io/siimpl', env.IMAGE_NAME, matrix.architecture)
+          cache-from: type=registry, ref=ghcr.io/siimpl/${{ env.IMAGE_NAME }}:builder-cache-${{ matrix.architecture }}
+          cache-to: type=registry, ref=ghcr.io/siimpl/${{ env.IMAGE_NAME }}:builder-cache-${{ matrix.architecture }}
   publish-manifest:
     runs-on: arc-runner-set-arm64
     needs: build-multiarch
@@ -46,7 +46,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
       - name: Publish Manifest
         run: |
           docker buildx imagetools create -t ghcr.io/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }} ghcr.io/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}-amd64 ghcr.io/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}-arm64
