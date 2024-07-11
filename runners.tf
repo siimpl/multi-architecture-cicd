@@ -10,7 +10,7 @@ resource "helm_release" "arc" {
 
 resource "helm_release" "arc_runner_set_amd64" {
   name      = "arc-runner-set-amd64"
-  chart     = "oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller"
+  chart     = "oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set"
   namespace = "arc-runners"
   create_namespace = true
   timeout   = 120
@@ -28,7 +28,7 @@ resource "helm_release" "arc_runner_set_amd64" {
 
 resource "helm_release" "arc_runner_set_arm64" {
   name      = "arc-runner-set-arm64"
-  chart     = "oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller"
+  chart     = "oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set"
   namespace = "arc-runners"
   create_namespace = true
   timeout   = 120

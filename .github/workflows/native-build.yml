@@ -38,6 +38,7 @@ jobs:
           cache-to: format('type=registry, ref={0}/{1}:builder-cache-{2}}', ghcr.io/siimpl, env.IMAGE_NAME, matrix.architecture)
   publish-manifest:
     runs-on: arc-runner-set-arm64
+    needs: build-multiarch
     permissions:
       id-token: write
       contents: read
