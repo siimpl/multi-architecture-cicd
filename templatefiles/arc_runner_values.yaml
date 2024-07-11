@@ -157,7 +157,7 @@ template:
       - name: dind-externals
         emptyDir: {}
       nodeSelector:
-        kubernetes.io/arch: ${architecture}
+        kubernetes.azure.com/agentpool: ${architecture}pool
   ######################################################################################################
   ## with containerMode.type=kubernetes, we will populate the template.spec with following pod spec
   ## template:
