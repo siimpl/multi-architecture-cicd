@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: cicd-tooling
+  IMAGE_NAME: cicd-tooling-native
   IMAGE_VERSION: 1.0
 
 jobs:
@@ -36,8 +36,8 @@ jobs:
           platforms: linux/${{ matrix.architecture }}
           push: true
           tags: ${{ env.IMAGE_NAME }}
-          cache-from: type=registry, ref=ghcr.io/siimpl/${{ env.IMAGE_NAME }}:builder-cache-${{ matrix.architecture }}
-          cache-to: type=registry, ref=ghcr.io/siimpl/${{ env.IMAGE_NAME }}:builder-cache-${{ matrix.architecture }}
+          cache-from: type=registry,ref=ghcr.io/siimpl/${{ env.IMAGE_NAME }}:builder-cache-${{ matrix.architecture }}
+          cache-to: type=registry,ref=ghcr.io/siimpl/${{ env.IMAGE_NAME }}:builder-cache-${{ matrix.architecture }},mode=max
   publish-manifest:
     runs-on: arc-runner-set-arm64
     needs: build-multiarch

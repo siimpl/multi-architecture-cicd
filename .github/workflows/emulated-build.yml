@@ -13,7 +13,7 @@ jobs:
       pull-requests: read
       packages: write
     env:
-      IMAGE_NAME: cicd-tooling
+      IMAGE_NAME: cicd-tooling-emulated
       IMAGE_VERSION: 1.0
     runs-on: ubuntu-latest
     strategy:
