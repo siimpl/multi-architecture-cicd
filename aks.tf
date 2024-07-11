@@ -30,7 +30,7 @@ resource "azurerm_kubernetes_cluster" "cicd" {
 resource "azurerm_kubernetes_cluster_node_pool" "amd64" {
   name                  = "amd64pool"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.cicd.id
-  vm_size               = "Standard_DS2_v2"
+  vm_size               = "Standard_DS2_v2" # AMD-based instance
   node_count            = 1
   os_type               = "Linux"
   tags = {
