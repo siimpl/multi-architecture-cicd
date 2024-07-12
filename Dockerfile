@@ -19,7 +19,7 @@ RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/s
 RUN rm get_helm.sh
 
 # Install kubectl
-RUN curl -LO "https://dl.k8s.io/release/v1.30.2/bin/linux/amd64/kubectl" \
+RUN curl -LO "https://dl.k8s.io/release/v1.30.2/bin/linux/$(uname -m)/kubectl" \
     && chmod +x kubectl \
     && mv kubectl /usr/local/bin/
 
