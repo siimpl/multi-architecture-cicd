@@ -8,7 +8,11 @@ This offers a simpler configuration, but delivers a significant perfomance hit w
 
 Our solution uses the [native node strategy](https://docs.docker.com/build/building/multi-platform/#multiple-native-nodes) to give us the performance gains of native architecture builds, but still supporting multi-architecture manifests.
 
-Going through the guide, you will notice how the `native-build` action runs roughly 90% faster than the `emulated-build` action using the self-hosted runners.
+Going through the guide, you will notice how the `native-build` action (self-hosted runners) runs roughly 90% faster than the `emulated-build` action (github-hosted runners).
+
+## Business Impact
+
+Improving build times has a direct impact on [DORA metrics](https://dora.dev/quickcheck/). Primarily on the `Lead time for changes` and `Time to restore`, but has an impact on all metrics. If this use-case fits your purposes, the drop in build times could have a significant impact on your teams DORA report.
 
 ## Pre-requisuites
 
