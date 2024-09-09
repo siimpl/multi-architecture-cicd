@@ -41,6 +41,6 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: .
-          platforms: linux/${{ matrix.architecture }}
+          platforms: linux/arm64,linux/amd64
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}-${{ matrix.architecture }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
