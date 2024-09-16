@@ -8,7 +8,7 @@ This offers a simpler configuration, but delivers a significant perfomance hit w
 
 Our solution uses the [native node strategy](https://docs.docker.com/build/building/multi-platform/#multiple-native-nodes) to give us the performance gains of native architecture builds, but still supporting multi-architecture manifests.
 
-Going through the guide, you will notice how the `native-build` action (self-hosted runners) runs roughly 90% faster than the `emulated-build` action (github-hosted runners).
+Going through the guide, you will notice how the `native-build` action (self-hosted runners) runs roughly 90% faster than the `emulated-build` action (github-hosted runners), and roughly 95% faster leveraging [Docker Build Cloud](https://www.docker.com/products/build-cloud/)
 
 ## Business Impact
 
@@ -65,9 +65,18 @@ terraform apply -auto-approve
 Update the `REGISTRY` value to match your ghcr repository, push your changes, and create a Pull Request.
 This will trigger the `emulated-build` and `native-build` to kickoff.
 
+## Docker Build Cloud
+
+This is a new feature set that offers blazing fast builds, multi-architecture support, shared build caching right from the Docker Desktop app.
+
+Setup is straightforward, and can be done following this guide: [DBC setup guide](https://docs.docker.com/build-cloud/setup/). Once you've done this, you will be able to target remote builders for local development builds. This is hugely beneficial for heavier/multi-architecture builds, since you can leverage the speed of native-arch builders for local development!
+
+Following this guide, you can integrate these builders into your CI/CD pipelines: [CI/CD integration guide](https://docs.docker.com/build-cloud/ci/). Also, see the `docker-build-cloud.yml` for the working example for this project.
+
 ## Tooling Docs
 
 * [AKS](https://learn.microsoft.com/en-us/azure/aks/)
 * [Terraform](https://github.com/stretchr/testify)
 * [GitHub Runners](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/deploying-runner-scale-sets-with-actions-runner-controller)
 * [GitHub Actions](https://docs.github.com/en/actions)
+* [Docker Build Cloud](https://www.docker.com/products/build-cloud/)
